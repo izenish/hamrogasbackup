@@ -237,6 +237,8 @@
             <th scope="col">ordered</th>
             <th scope="col">Number</th>
             <th scope="col">Date</th>
+            <th scope="col">Amount</th>
+
             <!-- <th scope="col">Price</th> -->
             <th scope="col">Location</th>
             <th scope="col">Edit</th>
@@ -263,10 +265,21 @@
             <td><?php echo $main_result['item']; ?></td>
             <td><?php echo $main_result['quantity']; ?></td>
             <td><?php echo $main_result['created_at']; ?></td>
-                      <!-- <td><?php// echo $main_result['item_price']; ?></td> -->
-            
-         <!--    <td><a href="delete.php?id=<?php// echo($main_result['id']);?>" class="text-danger"><i
-                  class="fas fa-trash-alt"></i></a></td> -->
+            <?php
+             if( $main_result['payment']=="COD")
+             {
+               ?>
+
+            <td><?php echo $main_result['amt']; 
+            ?> </td>
+            <?php
+            }
+            else{?>
+              <td><p>Paid</p></td>
+
+            <?php }
+            ?>
+                    
                 <td align="center"><a onclick="map(<?php   echo($main_result['customer_id']);?>);" style="cursor: pointer; color:#dd3e4e;"><i class="btn btn-primary" style="font-style: normal;">Location</i></a></td>  
                   </td>     
                  <td align="center"><a onclick="confirm(<?php echo($main_result['customer_id']);?>);" style="cursor: pointer; color:#dd3e4e;"><i class="fas fa-trash-alt"></i></a></td> 
